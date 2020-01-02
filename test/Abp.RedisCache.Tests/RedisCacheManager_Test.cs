@@ -20,7 +20,7 @@ namespace Abp.RedisCache.Tests
             LocalIocManager.Register<AbpRedisCacheOptions>();
             LocalIocManager.Register<ICachingConfiguration, CachingConfiguration>();
             LocalIocManager.Register<IAbpRedisCacheDatabaseProvider, AbpRedisCacheDatabaseProvider>();
-            LocalIocManager.Register<ICacheManager, AbpRedisCacheManager>();
+            LocalIocManager.Register<ICacheManager, AbpRedisStringCacheManager>();
             LocalIocManager.Register<IRedisCacheSerializer,DefaultRedisCacheSerializer>();
             LocalIocManager.IocContainer.Register(Component.For<IAbpStartupConfiguration>().Instance(Substitute.For<IAbpStartupConfiguration>()));
 

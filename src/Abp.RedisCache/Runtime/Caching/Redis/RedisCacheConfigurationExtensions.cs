@@ -27,7 +27,7 @@ namespace Abp.Runtime.Caching.Redis
         {
             var iocManager = cachingConfiguration.AbpConfiguration.IocManager;
 
-            iocManager.RegisterIfNot<ICacheManager, AbpRedisCacheManager>();
+            iocManager.RegisterIfNot<ICacheManager, AbpRedisStringCacheManager>();
 
             optionsAction(iocManager.Resolve<AbpRedisCacheOptions>());
         }

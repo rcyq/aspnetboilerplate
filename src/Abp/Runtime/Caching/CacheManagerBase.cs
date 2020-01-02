@@ -61,6 +61,7 @@ namespace Abp.Runtime.Caching
             });
         }
         protected abstract void DisposeCaches();
+
         public virtual void Dispose()
         {
             DisposeCaches();

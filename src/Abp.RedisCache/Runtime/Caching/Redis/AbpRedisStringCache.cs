@@ -10,9 +10,9 @@ using StackExchange.Redis;
 namespace Abp.Runtime.Caching.Redis
 {
     /// <summary>
-    /// Used to store cache in a Redis server.
+    /// Used to store cache (in string) in a Redis server.
     /// </summary>
-    public class AbpRedisCache : CacheBase
+    public class AbpRedisStringCache : CacheBase
     {
         private readonly IDatabase _database;
         private readonly IRedisCacheSerializer _serializer;
@@ -20,7 +20,7 @@ namespace Abp.Runtime.Caching.Redis
         /// <summary>
         /// Constructor.
         /// </summary>
-        public AbpRedisCache(
+        public AbpRedisStringCache(
             string name,
             IAbpRedisCacheDatabaseProvider redisCacheDatabaseProvider,
             IRedisCacheSerializer redisCacheSerializer)
