@@ -24,6 +24,7 @@ namespace Abp.Runtime.Caching.Redis
         {
             return _iocManager.Resolve<AbpRedisStringCache>(new { name });
         }
+
         protected override void DisposeCaches()
         {
             foreach (var cache in Caches)

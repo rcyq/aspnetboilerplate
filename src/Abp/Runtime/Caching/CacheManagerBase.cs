@@ -20,7 +20,7 @@ namespace Abp.Runtime.Caching
     /// Base class for cache managers.
     /// </summary>
     public abstract class CacheManagerBase<TCache> : ICacheManager<TCache>, ISingletonDependency
-        where TCache : class, ICacheOptions
+        where TCache : class
     {
 
         protected readonly ICachingConfiguration Configuration;
@@ -50,11 +50,14 @@ namespace Abp.Runtime.Caching
             {
                 var cache = CreateCacheImplementation(cacheName);
 
-                var configurators = Configuration.Configurators.Where(c => c.CacheName == null || c.CacheName == cacheName);
-
-                foreach (var configurator in configurators)
+                if (cache is ICacheOptions cacheOptions)
                 {
-                    configurator.InitAction?.Invoke(cache);
+                    var configurators = Configuration.Configurators.Where(c => c.CacheName == null || c.CacheName == cacheName);
+
+                    foreach (var configurator in configurators)
+                    {
+                        configurator.InitAction?.Invoke(cacheOptions);
+                    }
                 }
 
                 return cache;
